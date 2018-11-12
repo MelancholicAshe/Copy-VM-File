@@ -24,7 +24,7 @@ The steps for running this are pretty simple. Open Powershell as an administrato
 
 ## Version
 
-1.0
+1.1
 
 ## Authors
 

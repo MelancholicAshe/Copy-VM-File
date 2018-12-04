@@ -9,9 +9,13 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 You will need:
+
 A computer running Windows Pro, Education, or Enterprise.
+
 Administrator Privileges
+
 Hyper-V
+
 A VM that needs files
 
 ### Running this file

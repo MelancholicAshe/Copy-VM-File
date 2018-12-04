@@ -1,13 +1,33 @@
-﻿<#
+<#
 Solution: Hyper-V File Transfer
 Purpose: Enables VM Integration Services for file transfer and transfers files from host computer to Hyper-V Virtual Machines.
-Version: 1.1 - November 10th, 2018
+Version: 2.0 - December 4th, 2018
  
 This script is provided "AS IS" with no warranties, confers no rights and 
 is not supported by the authors or Deployment Artist. 
  
 Author - Ashe [AstralMelancholy.com]
 #>
+
+#Elevate to admin permissions
+
+param([switch]$Elevated)
+function Check-Admin {
+$currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent())
+$currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+}
+if ((Check-Admin) -eq $false)  {
+if ($elevated)
+{
+# could not elevate, quit
+}
+ 
+else {
+ 
+Start-Process powershell.exe -Verb RunAs -ArgumentList ('-noprofile -noexit -file "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))
+}
+exit
+}
 
 #Check for VM Integration Services on the VM and enable if they are not
 
